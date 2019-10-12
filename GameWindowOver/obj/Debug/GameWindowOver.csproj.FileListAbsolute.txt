@@ -1,0 +1,10 @@
+C:\Users\Angelo's Tower PC\source\repos\GameWindowOver\GameWindowOver\bin\Debug\GameWindowOver.exe.config
+C:\Users\Angelo's Tower PC\source\repos\GameWindowOver\GameWindowOver\bin\Debug\GameWindowOver.exe
+C:\Users\Angelo's Tower PC\source\repos\GameWindowOver\GameWindowOver\bin\Debug\GameWindowOver.pdb
+C:\Users\Angelo's Tower PC\source\repos\GameWindowOver\GameWindowOver\obj\Debug\GameWindowOver.csprojAssemblyReference.cache
+C:\Users\Angelo's Tower PC\source\repos\GameWindowOver\GameWindowOver\obj\Debug\GameWindowOver.Properties.Resources.resources
+C:\Users\Angelo's Tower PC\source\repos\GameWindowOver\GameWindowOver\obj\Debug\GameWindowOver.csproj.GenerateResource.cache
+C:\Users\Angelo's Tower PC\source\repos\GameWindowOver\GameWindowOver\obj\Debug\GameWindowOver.csproj.CoreCompileInputs.cache
+C:\Users\Angelo's Tower PC\source\repos\GameWindowOver\GameWindowOver\obj\Debug\GameWindowOver.exe
+C:\Users\Angelo's Tower PC\source\repos\GameWindowOver\GameWindowOver\obj\Debug\GameWindowOver.pdb
+C:\Users\Angelo's Tower PC\source\repos\GameWindowOver\GameWindowOver\obj\Debug\GameWindowOver.WindowCaptureForm.resources
