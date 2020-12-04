@@ -14,6 +14,8 @@ namespace GameWindowOver
 {
     public partial class WindowCaptureForm : Form
     {
+        WindowHandleInfo WindowInfo;
+
         Dictionary<string, Process> ListOfApps = new Dictionary<string, Process>();
         Dictionary<string, WindowHandleInfo> ListOfWindows = new Dictionary<string, WindowHandleInfo>();
 
@@ -40,7 +42,10 @@ namespace GameWindowOver
         public WindowCaptureForm()
         {
             InitializeComponent();
+            MouseWheel += OnMouseWheel;
             TexBox_OnOffKey.Text = OnOffKey.ToString();
+
+            WindowInfo = new WindowHandleInfo(Handle);
 
             OldSize = this.Size;
             OldLocation = this.Location;
@@ -194,6 +199,8 @@ namespace GameWindowOver
                     CheBox_Control.Hide();
                     CheBox_Alt.Enabled = false;
                     CheBox_Alt.Hide();
+                    CheBox_DoubleKeyProtection.Enabled = false;
+                    CheBox_DoubleKeyProtection.Hide();
                     LisBox_Program.Enabled = false;
                     LisBox_Program.Hide();
                     LisBox_Window.Enabled = false;
@@ -208,6 +215,8 @@ namespace GameWindowOver
                     Left = Rec.Left;
                     TargetWindow.NoInactive = true;
                     TitleBarHeight = RectangleToScreen(ClientRectangle).Top - Top;
+                    TargetWindow.SetForegroundWindow();
+                    WindowInfo.SetForegroundWindow();
                     //BorderWidth = RectangleToScreen(ClientRectangle).Right - Right;
                     IgnoreResize = false;
                 }
@@ -236,6 +245,8 @@ namespace GameWindowOver
                     CheBox_Control.Show();
                     CheBox_Alt.Enabled = true;
                     CheBox_Alt.Show();
+                    CheBox_DoubleKeyProtection.Enabled = true;
+                    CheBox_DoubleKeyProtection.Show();
                     LisBox_Program.Enabled = true;
                     LisBox_Program.Show();
                     LisBox_Window.Enabled = true;
@@ -311,6 +322,17 @@ namespace GameWindowOver
             }
         }
 
+        private void OnMouseWheel(object sender, MouseEventArgs e)
+        {
+            if (DiscordCaptureMode)
+            {
+                if(e.Delta < 0)
+                    TargetWindow.SendMouseWheelDown(e.Location, TitleBarHeight, BorderWidth);
+                else
+                    TargetWindow.SendMouseWheelUp(e.Location, TitleBarHeight, BorderWidth);
+            }
+        }
+
         //const int YOff = 33;
         //const int XOff = 3;
 
@@ -381,7 +403,7 @@ namespace GameWindowOver
                 TitleBarHeight = RectangleToScreen(ClientRectangle).Top - Top;
                 //BorderWidth = RectangleToScreen(ClientRectangle).Right - Right;
                 TargetWindow.SetWindowLocation(Location.X, Location.Y, Size.Width, Size.Height);
-                TargetWindow.SetForegroundWindow();
+                WindowInfo.SetForegroundWindow();
             }
         }
 
@@ -393,7 +415,7 @@ namespace GameWindowOver
                 TitleBarHeight = RectangleToScreen(ClientRectangle).Top - Top;
                 //BorderWidth = RectangleToScreen(ClientRectangle).Right - Right;
                 TargetWindow.SetWindowLocation(Location.X, Location.Y, Size.Width, Size.Height);
-                TargetWindow.SetForegroundWindow();
+                WindowInfo.SetForegroundWindow();
             }
         }
 

@@ -56,7 +56,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangle.cs" />
-    <Compile Include="WindowHandle.cs" />
+    <Compile Include="WindowHandleInfo.cs" />
     <EmbeddedResource Include="WindowCaptureForm.resx">
       <DependentUpon>WindowCaptureForm.cs</DependentUpon>
     </EmbeddedResource>

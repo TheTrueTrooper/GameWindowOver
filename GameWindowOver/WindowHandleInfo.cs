@@ -25,7 +25,8 @@ namespace GameWindowOver
             WM_RBUTTONDOWN = 0x204,
             WM_RBUTTONUP = 0x205,
             WM_RBUTTONDBLCLK = 0x206,
-            WM_MOUSEMOVE = 0x0200
+            WM_MOUSEMOVE = 0x0200,
+            WM_MOUSEWHEEL = 0x020E//0x020A
         }
 
         public enum MouseButton
@@ -264,6 +265,28 @@ namespace GameWindowOver
             //GetCursorPos(out Location);
             //SendMessage(Handle, (int)InputType.WM_LBUTTONDOWN, 0x00000001, 0x1E5025B);
             PostMessage(_Handle, (int)InputType.WM_MOUSEMOVE, 0, Location);
+        }
+
+        public void SendMouseWheelDown(Point LoctionOfPointer, int OffX = 0, int OffY = 0)
+        {
+            int Location = LoctionOfPointer.X + OffX;
+            if(LoctionOfPointer.X < 0)
+            Location |= (LoctionOfPointer.Y + OffY) << 16;
+            //int Location = 0;
+            //GetCursorPos(out Location);
+            //SendMessage(Handle, (int)InputType.WM_LBUTTONDOWN, 0x00000001, 0x1E5025B);
+            PostMessage(_Handle, (int)InputType.WM_MOUSEWHEEL, -120, Location);
+        }
+
+        public void SendMouseWheelUp(Point LoctionOfPointer, int OffX = 0, int OffY = 0)
+        {
+            int Location = LoctionOfPointer.X + OffX;
+            if (LoctionOfPointer.X < 0)
+                Location |= (LoctionOfPointer.Y + OffY) << 16;
+            //int Location = 0;
+            //GetCursorPos(out Location);
+            //SendMessage(Handle, (int)InputType.WM_LBUTTONDOWN, 0x00000001, 0x1E5025B);
+            PostMessage(_Handle, (int)InputType.WM_MOUSEWHEEL, 120, Location);
         }
 
         public void SendKeyDown(int KeyValue)
